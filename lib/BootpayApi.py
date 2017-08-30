@@ -2,7 +2,7 @@ import requests
 
 class BootpayApi:
 
-    base_url = 'https://dev-api.bootpay.co.kr/'
+    base_url = 'https://api.bootpay.co.kr/'
     url_confirm = base_url + 'receipt/'
     url_cancel = base_url + 'cancel'
 
