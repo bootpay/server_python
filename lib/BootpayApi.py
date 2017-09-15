@@ -13,7 +13,7 @@ class BootpayApi:
     def cancel(self, receipt_id, name, reason):
         url = self.url_cancel
         payload = {'application_id': self.application_id,
-                   'pk': self.pk,
+                   'private_key': self.pk,
                    'receipt_id': receipt_id,
                    'name': name,
                    'reason': reason}
@@ -22,6 +22,6 @@ class BootpayApi:
 
     def confirm(self, receipt_id):
         url = self.url_confirm + receipt_id
-        payload = {'application_id': self.application_id, 'pk': self.pk}
+        payload = {'application_id': self.application_id, 'private_key': self.pk}
         return requests.get(url, params=payload)
 
