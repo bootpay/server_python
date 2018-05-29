@@ -29,8 +29,9 @@ class BootpayApi:
             self.token = result['data']['token']
         return result
 
-    def cancel(self, receipt_id, name, reason):
+    def cancel(self, receipt_id, price=None, name=None, reason=None):
         payload = {'receipt_id': receipt_id,
+                   'price': price,
                    'name': name,
                    'reason': reason}
 
