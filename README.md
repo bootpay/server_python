@@ -25,7 +25,7 @@ pip install -r requirements.txt
 from lib.BootpayApi import BootpayApi
 
 api = BootpayApi("application_id_value_1234", '593f8febe13f332431a8ddaw')
-print api.confirm('593f8febe13f332431a8ddae').text
+print api.verify('593f8febe13f332431a8ddae').text
 ```
 
 ### 더 자세한 정보는 [Docs](https://docs.bootpay.co.kr/api/validate?languageCurrentIndex=3)를 참조해주세요. 
