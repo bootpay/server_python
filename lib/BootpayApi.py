@@ -46,7 +46,7 @@ class BootpayApi:
 
     def subscribe_billing(self, billing_key, item_name, price, order_id, items=None):
         if items is None:
-            items = []
+            items = {}
         payload = {
             'billing_key': billing_key,
             'item_name': item_name,
