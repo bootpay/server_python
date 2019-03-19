@@ -93,3 +93,8 @@ class BootpayApi:
         return requests.post(self.api_url(['request', 'card_rebill.json']), data=payload, headers={
             'Authorization': self.token
         }).json()
+
+    def destroy_subscribe_billing_key(self, billing_key):
+        return requests.delete(self.api_url(['subscribe', 'billing', billing_key]), headers={
+            'Authorization': self.token
+        }).json()
