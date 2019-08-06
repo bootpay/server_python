@@ -76,7 +76,7 @@ class BootpayApi:
         }).json()
 
     def get_subscribe_billing_key(self, pg, order_id, item_name, card_no, card_pw, expire_year, expire_month,
-                                  identify_number, user_info=None):
+                                  identify_number, user_info=None, extra=None):
         if user_info is None:
             user_info = {}
         payload = {
@@ -88,7 +88,8 @@ class BootpayApi:
             'expire_year': expire_year,
             'expire_month': expire_month,
             'identify_number': identify_number,
-            'user_info': user_info
+            'user_info': user_info,
+            'extra': extra
         }
         return requests.post(self.api_url(['request', 'card_rebill.json']), data=payload, headers={
             'Authorization': self.token
