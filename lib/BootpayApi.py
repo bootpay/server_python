@@ -100,3 +100,45 @@ class BootpayApi:
         return requests.delete(self.api_url(['subscribe', 'billing', billing_key]), headers={
             'Authorization': self.token
         }).json()
+
+    def remote_form(self, remoter_form, sms_payload=None):
+        if sms_payload is None:
+            sms_payload = {}
+        payload = {
+            'application_id': self.application_id,
+            'remote_form': remoter_form,
+            'sms_payload': sms_payload
+        }
+        return requests.post(self.api_url(['app', 'rest', 'remote_form.json']), data=payload, headers={
+            'Authorization': self.token
+        }).json()
+
+    def send_sms(self, receive_numbers, message, send_number = None, extra = {}):
+        payload = {
+            'data': {
+                'sp': send_number,
+                'rps': receive_numbers,
+                'msg': message,
+                'm_id': extra['m_id'],
+                'o_id': extra['o_id']
+            }
+        }
+        return requests.post(self.api_url(['push', 'sms.json']), data=payload, headers={
+            'Authorization': self.token
+        }).json()
+
+    def send_lms(self, receive_numbers, message, subject, send_number = None, extra = {}):
+        payload = {
+            'data': {
+                'sp': send_number,
+                'rps': receive_numbers,
+                'msg': message,
+                'sj': subject,
+                'm_id': extra['m_id'],
+                'o_id': extra['o_id']
+            }
+        }
+        return requests.post(self.api_url(['push', 'lms.json']), data=payload, headers={
+            'Authorization': self.token
+        }).json()
+
