@@ -101,6 +101,13 @@ class BootpayApi:
             'Authorization': self.token
         }).json()
 
+    def remote_link(self, payload = {}, sms_payload=None):
+        if sms_payload is None:
+                sms_payload = {}
+        payload['sms_payload'] = sms_payload
+        return requests.post(self.api_url(['app', 'rest', 'remote_link.json']), data=payload).json()
+
+
     def remote_form(self, remoter_form, sms_payload=None):
         if sms_payload is None:
             sms_payload = {}
