@@ -149,3 +149,8 @@ class BootpayApi:
             'Authorization': self.token
         }).json()
 
+
+    def certificate(self, receipt_id):
+        return requests.post(self.api_url(['certificate.json']), data={receipt_id: receipt_id}, headers={
+            'Authorization': self.token
+        }).json()
