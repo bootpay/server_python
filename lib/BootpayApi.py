@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 class BootpayApi:
     base_url = {
         'development': 'https://dev-api.bootpay.co.kr',
@@ -101,12 +102,11 @@ class BootpayApi:
             'Authorization': self.token
         }).json()
 
-    def remote_link(self, payload = {}, sms_payload=None):
+    def remote_link(self, payload={}, sms_payload=None):
         if sms_payload is None:
-                sms_payload = {}
+            sms_payload = {}
         payload['sms_payload'] = sms_payload
         return requests.post(self.api_url(['app', 'rest', 'remote_link.json']), data=payload).json()
-
 
     def remote_form(self, remoter_form, sms_payload=None):
         if sms_payload is None:
@@ -120,7 +120,7 @@ class BootpayApi:
             'Authorization': self.token
         }).json()
 
-    def send_sms(self, receive_numbers, message, send_number = None, extra = {}):
+    def send_sms(self, receive_numbers, message, send_number=None, extra={}):
         payload = {
             'data': {
                 'sp': send_number,
@@ -134,7 +134,7 @@ class BootpayApi:
             'Authorization': self.token
         }).json()
 
-    def send_lms(self, receive_numbers, message, subject, send_number = None, extra = {}):
+    def send_lms(self, receive_numbers, message, subject, send_number=None, extra={}):
         payload = {
             'data': {
                 'sp': send_number,
@@ -149,8 +149,7 @@ class BootpayApi:
             'Authorization': self.token
         }).json()
 
-
     def certificate(self, receipt_id):
-        return requests.post(self.api_url(['certificate.json']), data={receipt_id: receipt_id}, headers={
+        return requests.get(self.api_url(['certificate', receipt_id]), headers={
             'Authorization': self.token
         }).json()
