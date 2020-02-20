@@ -158,3 +158,11 @@ class BootpayApi:
         return requests.get(self.api_url(['certificate', receipt_id]), headers={
             'Authorization': self.token
         }).json()
+
+    def submit(self, receipt_id):
+        payload = {
+            'receipt_id': receipt_id
+        }
+        return requests.post(self.api_url(['submit.json']), data=payload, headers={
+            'Authorization': self.token
+        }).json()
