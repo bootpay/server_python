@@ -56,8 +56,9 @@ class BootpayApi:
             'items': items,
             'user_info': user_info
         }
-        return requests.post(self.api_url(['subscribe', 'billing.json']), data=payload, headers={
-            'Authorization': self.token
+        return requests.post(self.api_url(['subscribe', 'billing.json']), data=json.dumps(payload), headers={
+            'Authorization': self.token,
+            'Content-Type': 'application/json'
         }).json()
 
     def subscribe_billing_reserve(self, billing_key, item_name, price, order_id, execute_at, feedback_url, items=None):
@@ -73,8 +74,9 @@ class BootpayApi:
             'execute_at': execute_at,
             'feedback_url': feedback_url
         }
-        return requests.post(self.api_url(['subscribe', 'billing', 'reserve.json']), data=payload, headers={
-            'Authorization': self.token
+        return requests.post(self.api_url(['subscribe', 'billing', 'reserve.json']), data=json.dumps(payload), headers={
+            'Authorization': self.token,
+            'Content-Type': 'application/json'
         }).json()
 
     def get_subscribe_billing_key(self, pg, order_id, item_name, card_no, card_pw, expire_year, expire_month,
@@ -93,8 +95,9 @@ class BootpayApi:
             'user_info': user_info,
             'extra': extra
         }
-        return requests.post(self.api_url(['request', 'card_rebill.json']), data=payload, headers={
-            'Authorization': self.token
+        return requests.post(self.api_url(['request', 'card_rebill.json']), data=json.dumps(payload), headers={
+            'Authorization': self.token,
+            'Content-Type': 'application/json'
         }).json()
 
     def destroy_subscribe_billing_key(self, billing_key):
