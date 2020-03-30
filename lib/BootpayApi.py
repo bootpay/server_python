@@ -169,3 +169,9 @@ class BootpayApi:
         return requests.post(self.api_url(['submit.json']), data=payload, headers={
             'Authorization': self.token
         }).json()
+
+    def get_user_token(self, data={}):
+        return requests.post(self.api_url(['request', 'user', 'token.json']), data=data, headers={
+            'Authorization': self.token,
+            'Content-Type': 'application/json'
+        }).json()
