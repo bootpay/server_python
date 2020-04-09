@@ -79,6 +79,12 @@ class BootpayApi:
             'Content-Type': 'application/json'
         }).json()
 
+    def subscribe_billing_reserve_cancel(self, reserve_id):
+        return requests.delete(self.api_url(['subscribe', 'billing', 'reserve', reserve_id]), headers={
+            'Authorization': self.token,
+            'Content-Type': 'application/json'
+        }).json()
+
     def get_subscribe_billing_key(self, pg, order_id, item_name, card_no, card_pw, expire_year, expire_month,
                                   identify_number, user_info=None, extra=None):
         if user_info is None:
