@@ -15,8 +15,9 @@ if result['status'] is 200:
         '정기 결제 테스트 아이템',
         3000,
         '12345',
-        time.time() + 10,
-        'https://dev-api.bootpay.co.kr/callback')
+        time.time() + 1000,
+        'https://dev-api.bootpay.co.kr/callback'
+    )
     if reserve_result['status'] is 200:
         response = bootpay.subscribe_billing_reserve_cancel(reserve_result['data']['reserve_id'])
         if response['status'] is 200:
