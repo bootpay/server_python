@@ -45,7 +45,7 @@ class BootpayApi:
             'Authorization': self.token
         }).json()
 
-    def subscribe_billing(self, billing_key, item_name, price, order_id, items=None, user_info=None):
+    def subscribe_billing(self, billing_key, item_name, price, order_id, items=None, user_info=None, extra=None):
         if items is None:
             items = {}
         payload = {
@@ -54,7 +54,8 @@ class BootpayApi:
             'price': price,
             'order_id': order_id,
             'items': items,
-            'user_info': user_info
+            'user_info': user_info,
+            'extra': extra
         }
         return requests.post(self.api_url(['subscribe', 'billing.json']), data=json.dumps(payload), headers={
             'Authorization': self.token,
