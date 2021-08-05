@@ -45,13 +45,15 @@ class BootpayApi:
             'Authorization': self.token
         }).json()
 
-    def subscribe_billing(self, billing_key, item_name, price, order_id, items=None, user_info=None, extra=None):
+    def subscribe_billing(self, billing_key, item_name, price, order_id, tax_free=0, items=None, user_info=None,
+                          extra=None):
         if items is None:
             items = {}
         payload = {
             'billing_key': billing_key,
             'item_name': item_name,
             'price': price,
+            'tax_free': tax_free,
             'order_id': order_id,
             'items': items,
             'user_info': user_info,
@@ -62,13 +64,15 @@ class BootpayApi:
             'Content-Type': 'application/json'
         }).json()
 
-    def subscribe_billing_reserve(self, billing_key, item_name, price, order_id, execute_at, feedback_url, items=None):
+    def subscribe_billing_reserve(self, billing_key, item_name, price, order_id, execute_at, feedback_url, tax_free=0,
+                                  items=None):
         if items is None:
             items = []
         payload = {
             'billing_key': billing_key,
             'item_name': item_name,
             'price': price,
+            'tax_free': tax_free,
             'order_id': order_id,
             'items': items,
             'scheduler_type': 'oneshot',
