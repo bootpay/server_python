@@ -6,10 +6,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from lib.BootpayApi import BootpayApi
 
-bootpay = BootpayApi(
-    '59b731f084382614ebf72215',
-    'WwDv0UjfwFa04wYG0LJZZv1xwraQnlhnHE375n52X0U='
-)
+bootpay = BootpayApi('5b8f6a4d396fa665fdc2b5ea', 'rm6EYECr6aroQVG2ntW0A6LpWnkTgP4uQ3H18sDDUYw=')
 
 result = bootpay.get_access_token()
 if result['status'] is 200:
